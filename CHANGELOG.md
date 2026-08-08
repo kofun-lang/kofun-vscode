@@ -4,6 +4,10 @@ All notable changes to the Kofun VS Code extension.
 
 ## Unreleased
 
+Nothing yet.
+
+## 0.4.1 - 2026-08-08
+
 ### Changed
 
 - **The marketplace identity is `hjosugi.kofun`.** The manifest published as
