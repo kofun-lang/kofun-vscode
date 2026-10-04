@@ -46,8 +46,13 @@ fi
 
 rm -rf "$OUT"
 mkdir -p "$OUT"
-cp "$SERVER/server.js" "$SERVER/semantic-sidecar.mjs" "$SERVER/semantic-worker.mjs" \
-    "$SERVER/kofun-lsp" "$OUT/"
+# Every server module, not a fixed list. The split commit's list went stale as
+# the server gained modules (`import-target-index.js`, `visibility.js`) after
+# #861, and a missing sibling is a runtime `MODULE_NOT_FOUND` from the packaged
+# server rather than a build error. `build-semantic-bundle.sh` and `README.md`
+# are build-time sources, not shipped server files, so the glob is `.js`/`.mjs`.
+cp "$SERVER"/*.js "$SERVER"/*.mjs "$OUT/"
+cp "$SERVER/kofun-lsp" "$OUT/"
 mkdir -p "$OUT/native"
 cp "$SERVER/native/semantic_bridge.c" "$OUT/native/"
 
