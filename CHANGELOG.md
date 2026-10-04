@@ -4,7 +4,18 @@ All notable changes to the Kofun VS Code extension.
 
 ## Unreleased
 
-Nothing yet.
+### Fixed
+
+- **`scripts/vendor-server.sh` copies every server module.** Its fixed list
+  predated the server's `import-target-index.js` and `visibility.js`, so a
+  checkout pinned after those modules shipped packaged a server that failed at
+  startup with `MODULE_NOT_FOUND: ./import-target-index.js`. It now copies the
+  server's `.js`/`.mjs` files.
+
+### Changed
+
+- **The pinned `vendor/kofun` server is bumped** from `36122806` (the split
+  commit) to `460f3c79`.
 
 ## 0.4.1 - 2026-08-08
 
